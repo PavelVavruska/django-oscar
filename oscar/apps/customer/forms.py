@@ -25,6 +25,14 @@ class EmailAuthenticationForm(AuthenticationForm):
     username = forms.EmailField(label=_('Email Address'))
 
 
+class SearchByDateRangeForm(forms.Form):
+    """
+    Search in date-range form
+    """
+    date_from = forms.DateField(label=_('From'))
+    date_to = forms.DateField(label=_('To'))
+
+
 class EmailUserCreationForm(forms.ModelForm):
     email = forms.EmailField(label=_('Email Address'))
     password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput)
@@ -58,6 +66,7 @@ class EmailUserCreationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
 
 class SearchByDateRangeForm(forms.Form):
         date_from = forms.DateField(required=False, label="From")
